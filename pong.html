@@ -72,21 +72,30 @@
 			this.drawScore();
 		}
 
+		//handles bug where both players can move paddles at the same time
 		handleKeys(e) {
 			if(e.keyCode == 38){
-				playerR.movePlayer(true, game.canvas.height);
+				if(ball.x >= game.canvas.width / 2){
+					playerR.movePlayer(true, game.canvas.height);
+				}
 			}
 
 			if(e.keyCode == 40){
-				playerR.movePlayer(false, game.canvas.height);
+				if(ball.x >= game.canvas.width / 2){
+					playerR.movePlayer(false, game.canvas.height);
+				}
 			}
 
 			if(e.keyCode == 87){
-				playerL.movePlayer(true, game.canvas.height);
+				if(ball.x <= game.canvas.width / 2){
+					playerL.movePlayer(true, game.canvas.height);
+				}
 			}
 
 			if(e.keyCode == 83){
-				playerL.movePlayer(false, game.canvas.height);
+				if(ball.x <= game.canvas.width / 2){
+					playerL.movePlayer(false, game.canvas.height);
+				}
 			}
 		}
 
